@@ -1,11 +1,11 @@
-def mtf(config_list, request_sequence, verbose=False):
+def mtf(config_list, request_sequence, details=False):
     """
     Implementación del algoritmo Move to Front (MTF)
     
     Args:
         config_list (list): Lista de configuración inicial
         request_sequence (list): Secuencia de solicitudes
-        verbose (bool): Si True, imprime detalles de cada paso
+        details (bool): Si True, imprime detalles de cada paso
         
     Returns:
         tuple: (costo_total, config_list_final)
@@ -13,7 +13,7 @@ def mtf(config_list, request_sequence, verbose=False):
     cost = 0
     current_config = config_list.copy()
     
-    if verbose:
+    if details:
         print("Configuración inicial:", current_config)
     
     for request in request_sequence:
@@ -32,10 +32,10 @@ def mtf(config_list, request_sequence, verbose=False):
             current_config.pop(pos)
             current_config.insert(0, request)
         
-        if verbose:
+        if details:
             print(f"Solicitud: {request}, Costo: {request_cost}, Configuración: {current_config}")
     
-    if verbose:
+    if details:
         print("Costo total de acceso:", cost)
     
     return cost, current_config
